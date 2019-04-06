@@ -1,5 +1,7 @@
 os: linux
+
 dist: xenial
+
 jobs:
   include:
     - stage: "Lint and Compile"
