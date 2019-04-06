@@ -14,7 +14,8 @@ jobs:
             bash -x tools/lint-pr-commit-message.sh ${TRAVIS_PULL_REQUEST};
           fi
 
-    - name: "Linter"
+    - stage: "Lint and Compile"
+      name: "Linter"
       language: node_js
       node_js: "node"
       install:
@@ -22,7 +23,8 @@ jobs:
       script:
         - NODE=$(which node) make lint lint-py
 
-    - name: "Compile V8"
+    - stage: "Lint and Compile"
+      name: "Compile V8"
       language: cpp
       cache: ccache
       addons:
@@ -36,7 +38,8 @@ jobs:
       script:
         - CC='ccache gcc-6' CXX='ccache g++-6' make -j2 -C out V=1 v8
 
-    - name: "Compile Node.js"
+    - stage: "Lint and Compile"
+      name: "Compile Node.js"
       language: cpp
       cache: ccache
       addons:
